@@ -26,14 +26,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void ShowCursor_(Transform transform_)
+    private void ShowCursor_(Vector3 point_)
     {
         if (cursor == null)
         {
             cursor = Instantiate(CursorPrefab);
         }
-        cursor.transform.position = transform_.position;
-        cursor.transform.rotation = transform_.rotation;
+        cursor.transform.position = point_;
+        //cursor.transform.rotation = transform_.rotation;
     }
 
     private Transform GetCursorPosition_()
@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
         return cursor ? cursor.transform : null;
     }
     
-    static public void ShowCursor(Transform transform_)
+    static public void ShowCursor(Vector3 point_)
     {
-        instance.ShowCursor_(transform_);
+        instance.ShowCursor_(point_);
     }
     
     static public void Go()

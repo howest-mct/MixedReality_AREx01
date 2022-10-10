@@ -8,10 +8,12 @@ public class TrackingManager : MonoBehaviour
 {
     
     private ARTrackedImageManager trackedImageManager;
+    private Camera Camera;
 
     private void Awake()
     {
         trackedImageManager = GetComponent<ARTrackedImageManager>();
+        Camera = GetComponent<Camera>();
     }
 
     void OnEnable()
@@ -28,12 +30,12 @@ public class TrackingManager : MonoBehaviour
     {
         foreach (var i in eventArgs.added)
         {
-           GameManager.ShowCursor(i.transform);
+           GameManager.ShowCursor(i.transform.position);
         }
 
         foreach (var i in eventArgs.updated)
         { 
-           GameManager.ShowCursor(i.transform);
+           GameManager.ShowCursor(i.transform.position);
         }
 
         foreach (var i in eventArgs.removed)
